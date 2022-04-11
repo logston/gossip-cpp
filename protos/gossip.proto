@@ -1,0 +1,17 @@
+syntax = "proto3";
+package gossippb;
+
+import "google/protobuf/timestamp.proto";
+
+message Node {
+	string location = 1;
+}
+
+message Status {
+	repeated Node nodes = 1;
+	google.protobuf.Timestamp timestamp = 5;
+}
+
+service Gossip {
+	rpc GetStatus(Status) returns (Status) {}
+}
